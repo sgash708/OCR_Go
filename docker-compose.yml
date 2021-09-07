@@ -4,6 +4,6 @@ services:
     build: ./docker/go
     tty: true
     ports:
-      - 8989:80
+      - 8989:8989
     volumes:
       - ./server:/var/www/html
