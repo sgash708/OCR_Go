@@ -1,17 +1,21 @@
 package main
 
 import (
-	"net/http"
-	"os"
+	"fmt"
+	"log"
 
-	"github.com/labstack/echo/v4"
+	"github.com/otiai10/gosseract/v2"
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	e.Logger.Fatal(e.Start(":" + port))
+	client := gosseract.NewClient()
+	defer client.Close()
+
+	client.Languages = []string{"jpn"}
+	client.SetImage("test/data/kanji/o.png")
+	text, err := client.Text()
+	if err != nil {
+		log.Fatalln("文字を認識できませんでした。")
+	}
+	fmt.Println(text)
 }

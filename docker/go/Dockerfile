@@ -16,11 +16,7 @@ RUN apt install -y golang
 ENV GO111MODULE=on
 ENV GOPATH=$HOME/go
 ENV PATH=$PATH:$GOPATH/bin
-ENV PORT=8989
 
 WORKDIR /var/www/html
 
-# RUN go get -v ./... && go install .
-
 RUN apt install -y tesseract-ocr-$LANG
-# CMD ["OCR_Go"]
