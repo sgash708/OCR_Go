@@ -7,8 +7,8 @@ RUN apt update \
     ca-certificates \
     libtesseract-dev \
     tesseract-ocr \
-    software-properties-common \
-    tesseract-ocr-$LANG
+    tesseract-ocr-$LANG \
+    software-properties-common
 
 RUN add-apt-repository ppa:longsleep/golang-backports \
     && apt install -y golang
