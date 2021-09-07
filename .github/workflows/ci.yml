@@ -1,0 +1,23 @@
+name: Golang CI
+
+on:
+  push:
+    branches: [master, develop]
+
+jobs:
+  runs-on: macos-latest
+  env:
+    GO111MODULE: "on"
+    GO: '1.16'
+  name: Ubuntu Go${{ env.GO }}
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Golang
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ env.GO }}
+    - name: Install tesseract
+      run: brew install tesseract
+    - name: Test
+      run: go test -v -cover ./...
