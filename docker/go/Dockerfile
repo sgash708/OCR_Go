@@ -1,5 +1,4 @@
 FROM ubuntu:latest
-# FROM debian:bullseye-slim
 
 ARG LANG=jpn
 
@@ -10,16 +9,16 @@ RUN apt update \
     tesseract-ocr
 
 RUN apt install -y software-properties-common \
-    && add-apt-repository ppa:longsleep/golang-backports \ 
-    && apt install -y golang
+    && add-apt-repository ppa:longsleep/golang-backports
+
+RUN apt install -y golang
 
 ENV GO111MODULE=on
 ENV GOPATH=$HOME/go
 ENV PATH=$PATH:$GOPATH/bin
 ENV PORT=8989
 
-COPY . $GOPATH/src/github.com/sgash708/OCR_Go
-WORKDIR $GOPATH/src/github.com/sgash708/OCR_Go
+WORKDIR /var/www/html
 
 # RUN go get -v ./... && go install .
 

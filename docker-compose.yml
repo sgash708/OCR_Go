@@ -1,0 +1,9 @@
+version: '3'
+services:
+  golang:
+    build: ./docker/go
+    tty: true
+    ports:
+      - 8989:80
+    volumes:
+      - ./server:/var/www/html
