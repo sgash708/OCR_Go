@@ -13,6 +13,7 @@ func main() {
 	defer client.Close()
 
 	client.Languages = []string{os.Getenv("LANG")}
+	// TODO:DIテスト
 	client.SetImage("test/data/kanji/o.png")
 	text, err := client.Text()
 	if err != nil {
