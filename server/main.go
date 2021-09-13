@@ -14,7 +14,7 @@ func main() {
 
 	client.Languages = []string{os.Getenv("LANG")}
 	// TODO:DIテスト
-	client.SetImage("test/data/kanji/o.png")
+	client.SetImage("data/kanji/o.png")
 	text, err := client.Text()
 	if err != nil {
 		log.Fatalln("テキストに変換できませんでした。")
