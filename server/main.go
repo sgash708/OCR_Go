@@ -27,6 +27,10 @@ func main() {
 		log.Fatalln("テキストに変換できませんでした。")
 	}
 	fmt.Println(text)
+
+	if err := os.RemoveAll(fileName); err != nil {
+		log.Fatalln(err)
+	}
 }
 
 // DownloadFile ファイルダウンロード
